@@ -399,8 +399,8 @@ Trust BSC Newspaper to be your trusted guide in navigating the ever-evolving lan
   <h3 class="w3-center">CONTACT</h3>
   <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
   <div style="margin-top:48px">
-    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right" style="color: white;"></i> Indonesian</p>
-    <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> +62 878-68683722</p>
+    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right" style="color: red;"></i> Indonesian</p>
+    <p><a href="https://wa.me/6287868683722"><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> +62 878-68683722</a></p>
     <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right" style="color: red;"> </i>BSCNewspaper@mail.com</p>
     <p><i class="fa fa-telegram w3-hover-opacity w3-xxlarge w3-margin-right" style="color: blue;"></i> BSC_Newspaper</p>
     <p><i class="fa fa-twitter w3-hover-opacity w3-xxlarge w3-margin-right" style="color: blue;"></i> BSC_Newspaper</p>
