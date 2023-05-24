@@ -102,8 +102,6 @@
   <div class="w3-row-padding " style="margin-top:64px">
     <form action="input-article.php" method="post" enctype="multipart/form-data" id="laporkan" >
     <div class="form-group">
-    <input type="text" name="nik"value="<?php echo $nik ?>" placeholder="Masukan nik anda" required="" hidden="">
-      </div>
       <div class="form-group">
     <label>Input Banner</label>
     <!-- <input type="form-control" type="text" readonly="" name=""> -->
@@ -123,7 +121,6 @@
   </div>
 </div>
 
-<!-- Contact Section -->
 <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
   <h3 class="w3-center">CONTACT</h3>
   <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
@@ -166,27 +163,6 @@ function w3_open() {
 // Close the sidebar with the close button
 function w3_close() {
     mySidebar.style.display = "none";
-}
-</script>
-<script type="text/javascript">
-  var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 </script>
 </body>
