@@ -278,8 +278,8 @@ Trust BSC Newspaper to be your trusted guide in navigating the ever-evolving lan
 <div class="w3-container" style="padding:128px 16px" id="article">
   <h3 class="w3-center">Articles</h3>
   <!-- <p class="w3-center w3-large">The ones who runs this company</p> -->
-  <!-- <div class="w3-row-padding " style="margin-top:64px"> -->
-    <div class="row row-cols-6">
+  <div class="w3-row-padding " style="margin-top:64px">
+    
       <?php
         // require 'function.php';
         $sql = "SELECT * FROM articles";
@@ -298,17 +298,17 @@ Trust BSC Newspaper to be your trusted guide in navigating the ever-evolving lan
           $title = $d['title_article'];
           $id = $d['id'];
       ?>
-      <div class="col-3">
-        <div class="card">
-          <?php echo "<img class='card-img-top' src='terupload/$tempFile' style='width: 100%' />";?>
-            <div class="card-body">
-              <h5 class="card-title"><a href="article.php?id=<?php echo $id; ?>" style="color: black;" ><?php echo $title; ?></a>
-              </h5>
-              <p class="card-text"><small class="text-muted"></small></p>
-            </div>
+
+      <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-card">
+        <?php echo "<img class='card-img-top' src='terupload/$tempFile' style='width: 100%' />";?>
+        <div class="w3-container">
+        <h5 class="card-title"><a href="article.php?id=<?php echo $id; ?>" style="color: black;" ><?php echo $title; ?></a></h5>
+        <p class="card-text"><small class="text-muted"></small></p>
         </div>
       </div>
-      <!-- <div class="col-3">1 of 6</div> -->
+    </div>
+      
     <?php
       }
     ?>
