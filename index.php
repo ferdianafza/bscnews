@@ -102,53 +102,7 @@ session_start();
     <p><a href="#pricing" class="w3-button w3-red w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off">Pricing</a></p>
   </div> 
 </header>
-
-<!-- <div class="bgimg-1 slideshow-container">
-
-      <div class="mySlides fade">
-        <img class="image-banner" src="images/banner-pubg.jpg">
-        <div class="text"> </div>
-      </div>
-
-      <div class="mySlides fade">
-        <img class="image-banner" src="images/banner-cod.jpg">
-        <div class="text"> </div>
-      </div>
-
-      <div class="mySlides fade">
-        <img class="image-banner" src="images/banner-ros.jpg">
-        <div class="text"> </div>
-      </div>
-
-      <div class="mySlides fade">
-        <img class="image-banner" src="images/banner-gtav.jpg">
-        <div class="text"> </div>
-      </div>
-
-      </div>
-      <br>
-
-      <div class="down-banner">
-        <span class="dot"></span> 
-        <span class="dot"></span> 
-        <span class="dot"></span> 
-        <span class="dot"></span>
-      </div> -->
-
-<!-- About Section -->
 <div class="w3-container" style="padding:128px 16px; background-color: black;" id="about">
-  <!-- <div class="alert alert-primary" role="alert" style="width: 100%;"> -->
-      <?php 
-    require 'function.php';
-    $bitcoinPrice = (int)getCryptoPrice('BTC');
-    $bnbPrice = (int)getCryptoPrice('BNB');
-    $ethPrice = (int)getCryptoPrice('ETH');
-    $xlmPrice = getCryptoPrice('XLM');
-    $dogePrice = getCryptoPrice('DOGE');
-    $trxPrice = getCryptoPrice('TRX');
-  ?>
-  <marquee style="color: yellow;"><b><?php echo "BTC: $".$bitcoinPrice." BNB: $".$bnbPrice." ETH: $".$ethPrice." XLM: $".number_format($xlmPrice,4)." DOGE: $".number_format($dogePrice,4)." TRX: $".number_format($trxPrice,4);?></b></marquee>
-    <!-- </div> -->
   <h3 class="w3-center" style="color: white;">BSCNewspaper</h3>
   <p class="w3-center w3-large"style="color: white;">Welcome to BSC Newspaper, the premier media platform dedicated to providing comprehensive coverage of Decentralized Finance (DeFi) on the BNBCHAIN.
 
