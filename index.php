@@ -278,7 +278,7 @@ Trust BSC Newspaper to be your trusted guide in navigating the ever-evolving lan
 <div class="w3-container" style="padding:128px 16px" id="article">
   <h3 class="w3-center">Articles</h3>
   <!-- <p class="w3-center w3-large">The ones who runs this company</p> -->
-  <div class="w3-row-padding " style="margin-top:64px">
+  <div class="w3-row-padding" style="margin-top:64px">
     
       <?php
         // require 'function.php';
