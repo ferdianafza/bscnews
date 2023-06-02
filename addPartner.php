@@ -1,14 +1,16 @@
  <?php    
-session_start();
-    function isUserLoggedIn() {
+  session_start();
+  function isUserLoggedIn() {
     return isset($_SESSION['username']);
-}
+  }
+
   if (isUserLoggedIn()) {
       
     } else {
       header("Location: index.php");
       exit;
     }
+
  ?> 
 <!DOCTYPE html>
 <html>
@@ -20,6 +22,10 @@ session_start();
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 <script src="https://kit.fontawesome.com/c14d470b61.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="assets/css/index.css">
@@ -55,7 +61,9 @@ session_start();
 <!-- Navbar (sit on top) -->
 <div class="w3-top">
   <div class="w3-bar w3-black w3-card" id="myNavbar">
-    <a href="#home" class="w3-bar-item w3-button w3-wide"><img src="images/logo.png" width="90" height="40"></a>
+    <a href="#home" class="w3-bar-item w3-button w3-wide">
+      <img src="images/logo.png" width="90" height="40">
+    </a>
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-small">
       <a href="index.php" class="w3-bar-item w3-button">Home</a>
@@ -79,6 +87,7 @@ session_start();
   </div>
 </div>
 
+
 <!-- Sidebar on small screens when clicking the menu icon -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
@@ -91,51 +100,30 @@ session_start();
 
 <!-- Header with full-height image -->
 <div class="w3-container" style="padding:128px 16px" id="ourcostumers">
-  <h3 class="w3-center">Create Article</h3>
+  <h3 class="w3-center">Add Partner</h3>
   <!-- <p class="w3-center w3-large">The ones who runs this company</p> -->
   <div class="w3-row-padding " style="margin-top:64px">
-    <?php
-      require ("function.php");
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM articles WHERE id ='$id'";
-        $result = $conn->query($sql);
-        if ($result->num_rows < 0)  {
-            echo '<script>window.history.back()</script>';
-        }else{
-          $data = $result->fetch_assoc();
-          $title_article = $data['title_article'];
-          $content = $data['content'];
-          $namaFile = $data['namaFile'];
-          $id = $data['id'];
-        }
-      ?>
-    <form action="update-article.php" method="post" enctype="multipart/form-data" id="laporkan" >
+    <form action="input-partner.php" method="post" enctype="multipart/form-data" id="laporkan" >
     <div class="form-group">
-      </div>
       <div class="form-group">
     <label>Input Banner</label>
     <!-- <input type="form-control" type="text" readonly="" name=""> -->
     <input class="form-control" type="file" name="foto" />
       </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="exampleInputEmail1" name="id" placeholder="Title Article" style="width: 100%;" value="<?php echo $id;?>" hidden>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="title_partner" placeholder="Title Article" style="width: 100%;">
       <br/>
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="exampleInputEmail1" name="title_article" placeholder="Title Article" style="width: 100%;" value="<?php echo $title_article;?>">
-      <br/>
-    </div>
-    <div class="form-group">
-      <textarea class="ckeditor form-control " id="ckedtor" name="content" value="<?php echo $content;?>"></textarea>
     </div>
     <center>
         <input class="btn btn-primary" type="submit" name="tambah" value="Kirim ">
     </center>
   </form>
-  </div>
+  </div><
+</div>
+</div>
 </div>
 
-<!-- Contact Section -->
+
 <div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
   <h3 class="w3-center">CONTACT</h3>
   <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
@@ -176,27 +164,6 @@ function w3_open() {
 // Close the sidebar with the close button
 function w3_close() {
     mySidebar.style.display = "none";
-}
-</script>
-<script type="text/javascript">
-  var slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
 }
 </script>
 </body>

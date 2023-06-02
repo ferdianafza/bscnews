@@ -69,6 +69,7 @@ session_start();
       <?php 
       if (isUserLoggedIn()) {
         echo "<a href='manageArticle.php' class='w3-bar-item w3-button'><i class='fa fa-off'></i> Manage Article</a>";
+        echo "<a href='addPartner.php' class='w3-bar-item w3-button'><i class='fa fa-off'></i> Add Partner</a>";
         echo "<a href='logout.php' class='w3-bar-item w3-button'><i class='fa fa-off'></i> Logout</a>";
       }
       ?>
@@ -188,90 +189,48 @@ Trust BSC Newspaper to be your trusted guide in navigating the ever-evolving lan
   <h3 class="w3-center">Our Costumers</h3>
   <!-- <p class="w3-center w3-large">The ones who runs this company</p> -->
   <div class="w3-row-padding " style="margin-top:64px">
+    <!-- Looping Partner -->
+    <?php
+        // require 'function.php';
+        $sql = "SELECT * FROM partners";
+        $result = $conn->query($sql);
+        $batas = 8;
+        $halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+        $halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;  
+        $previous = $halaman - 1;
+        $next = $halaman + 1;
+        $jumlah_data = mysqli_num_rows($result);
+        $total_halaman = ceil($jumlah_data / $batas);
+        $data_laporan = mysqli_query($conn,"SELECT * FROM partners ORDER BY id DESC LIMIT $halaman_awal, $batas");
+        while($d = mysqli_fetch_array($data_laporan)){
+          $tempFile = $d['namaFile'];
+          $title = $d['title_partner'];
+          $id = $d['id'];
+      ?>
     <div class="w3-col l3 m6 w3-margin-bottom">
       <div class="w3-card">
-        <img src="images/cointiger.png" alt="John" style="width:100%">
+        <!-- <img src="images/cointiger.png" alt="John" style="width:100%"> -->
+        <?php echo "<img src='terupload/$tempFile' style='width: 100%' />";?>
         <div class="w3-container">
-          <h3>Cointiger</h3>
+          <h3><?php echo $title; ?></h3>
           <!-- <p class="w3-opacity">CEO & Founder</p> -->
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
+          <!-- <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p> -->
           <!-- <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p> -->
+          <?php 
+          if (isUserLoggedIn()) {
+            echo '
+              <a href="deletePartner.php?id='.$d['id'].'">
+                <button class="btn btn-danger">Delete
+                </button>
+              </a>';
+            }
+         ?>
         </div>
       </div>
     </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="images/passimpay.png" alt="John" style="width:100%">
-        <div class="w3-container">
-          <h3>Passimpay</h3>
-          <!-- <p class="w3-opacity">CEO & Founder</p> -->
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-          <!-- <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p> -->
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="images/mcrt.png" alt="John" style="width:100%">
-        <div class="w3-container">
-          <h3>MCRT</h3>
-          <!-- <p class="w3-opacity">CEO & Founder</p> -->
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-          <!-- <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p> -->
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="images/unidef.png" alt="John" style="width:100%">
-        <div class="w3-container">
-          <h3>unidef</h3>
-          <!-- <p class="w3-opacity">CEO & Founder</p> -->
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-          <!-- <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p> -->
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="w3-row-padding " style="margin-top:64px">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="images/gamium.png" alt="John" style="width:100%">
-        <div class="w3-container">
-          <h3>Gamium</h3>
-          <!-- <p class="w3-opacity">CEO & Founder</p> -->
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-          <!-- <p><button class="w3-button w3-light-grey w3-block"><i class="fa fa-envelope"></i> Contact</button></p> -->
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="images/xact.png" alt="John" style="width:100%">
-        <div class="w3-container">
-          <h3>Xact</h3>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="images/xact.png" alt="John" style="width:100%">
-        <div class="w3-container">
-          <h3>Xact</h3>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        </div>
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-card">
-        <img src="images/xact.png" alt="John" style="width:100%">
-        <div class="w3-container">
-          <h3>Xact</h3>
-          <p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-        </div>
-      </div>
-    </div>
+    <?php
+      }
+    ?>
   </div>
 </div>
 
@@ -399,8 +358,6 @@ Trust BSC Newspaper to be your trusted guide in navigating the ever-evolving lan
   <h3 class="w3-center">CONTACT</h3>
   <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
   <div style="margin-top:48px">
-    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right" style="color: red;"></i> Indonesian</p>
-    <p><a href="https://wa.me/6287868683722"><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i> +62 878-68683722</a></p>
     <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right" style="color: red;"> </i>BSCNewspaper@mail.com</p>
     <p><i class="fa fa-telegram w3-hover-opacity w3-xxlarge w3-margin-right" style="color: blue;"></i> BSC_Newspaper</p>
     <p><i class="fa fa-twitter w3-hover-opacity w3-xxlarge w3-margin-right" style="color: blue;"></i> BSC_Newspaper</p>
